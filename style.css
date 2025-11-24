@@ -1,0 +1,946 @@
+/* --- CSS Reset --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-width: 320px;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Utilities --- */
+.container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+.section-title-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+/* --- Header (Navbar) --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 8px 40px;
+}
+
+.navbar-logo-link img {
+    height: 52px;
+    display: block;
+    /* ★ 修正: ロゴとメニュー項目の間のマージンを広く (40px -> 60px) */
+    margin-right: 40px;
+}
+
+/* メニューリンクとアイコンを包むコンテナ */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    /* ★ 修正: メニュー項目間のスペースを広く (30px -> 50px) */
+    gap: 150px;
+    /* メニュー項目を右端に寄せる */
+    margin-left: auto;
+}
+
+/* ナビゲーション内のリンクスタイル */
+.navbar a {
+    font-weight: 700;
+    color: black;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    color: #990000;
+}
+
+/* リンクの下線アニメーション */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #990000;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Instagramアイコンのスタイル */
+.instagram-link {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.instagram-link .instagram-icon {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Instagramリンクの下線を無効化 */
+.instagram-link::after {
+    display: none;
+}
+
+/* --- KV (キービジュアル) --- */
+.kv {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.video-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.kv-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.kv-content .main-logo {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.7));
+    margin-bottom: 20px;
+}
+
+.kv-content .sub-copy {
+    font-family: 'TsukuARdGothic-Regular', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    text-shadow: 1px 3px 3px #000;
+    text-align: center;
+}
+
+/* --- キャッチコピー＆料理紹介セクション --- */
+.oisiiha-main {
+    margin-left: -80px;
+}
+
+.oisiiha-sub {
+    margin-left: -80px;
+}
+
+.catchcopy-section {
+    position: relative;
+    background-color: #fffcf2;
+    padding: 80px 0 120px;
+    overflow: hidden;
+}
+
+.catchcopy-section .washi-bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1460px;
+    height: 800px;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.catchcopy-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+    padding-top: 50px;
+}
+
+.catchcopy-content .text-area {
+    /* ★ 修正: 幅を広げ、padding-leftを減らすことで左に移動 */
+    width: 65%;
+    /* 以前の 55% から 65% に増加 */
+    padding-left: -40px;
+    /* 以前の 50px から 20px に減少 */
+    position: relative;
+    z-index: 3;
+}
+
+/* ★ 鍋の画像 */
+.catchcopy-section .nabe-img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 780px;
+    height: auto;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: fadeIn2s 1.5s 0.3s forwards;
+    z-index: 1;
+}
+
+.catchcopy-content .oisiiha-main {
+    font-family: 'TsukuARdGothic-Regular', sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: #555454;
+    letter-spacing: -0.05em;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(61, 61, 61, 0.5);
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeup 1s cubic-bezier(1, 1, 1, 1) forwards;
+}
+
+.catchcopy-content .oisiiha-sub {
+    font-family: 'TsukuARdGothic-Regular', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #555454;
+    letter-spacing: -0.05em;
+    line-height: 2.0;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeup 1.5s cubic-bezier(1, 1, 1, 1) forwards;
+}
+
+@keyframes fadeIn2s {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeup {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ★ 5枚の料理写真 */
+.catchcopy-section .dishes-gallery {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: 80px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dishes-gallery .dish-img {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+/* --- 店舗紹介セクション --- */
+.store-intro-section {
+    position: relative;
+    padding: 0 0 100px 0;
+    overflow: hidden;
+    margin-top: -120px;
+}
+
+.store-intro-section .section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.store-intro-section .store-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.store-intro-section .section-title-img {
+    position: relative;
+    z-index: 1;
+    margin-top: 60px;
+    width: 190px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.icon-slider-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: 1;
+    padding: 0;
+    margin-top: 150px;
+}
+
+.icon-slider-wrapper .icon-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 200%;
+}
+
+
+.icon-slider-wrapper .icon-set {
+    display: flex;
+    min-width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-slider-wrapper .icon {
+    flex: 0 0 auto;
+    width: calc((100% - 80px) / 5);
+}
+
+.ssection-title-img {
+    top: 1030px;
+}
+
+/* 矢印 */
+.icon-slider-wrapper .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 30px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.icon-slider-wrapper .arrow:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.icon-slider-wrapper .left-arrow {
+    left: 0px;
+}
+
+.icon-slider-wrapper .right-arrow {
+    right: 0px;
+}
+
+/* --- お知らせセクション (news-main-section) --- */
+.news-main-section {
+    position: relative;
+    /* Z-index: イベントセクションの下に配置 */
+    z-index: 1;
+    padding-top: 80px;
+    /* 修正済み: イベントセクションと適切な隙間を作るための下部余白 */
+    padding-bottom: 250px;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    max-width: none;
+}
+
+/* ★ 背景 (haikei.png) */
+.news-main-section .section-bg-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* ★ タイトル (筆 + 文字) */
+.news-main-section .news-header {
+    position: relative;
+    z-index: 3;
+    max-width: 1000px;
+    margin: 40px auto 40px auto;
+    text-align: center;
+}
+
+.news-main-section .hude-img {
+    width: 260px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.news-main-section .section-title-img {
+    width: 170px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: -85px;
+}
+
+/* ★ お知らせ一覧の白いコンテナ */
+.news-main-section .news-list-container {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+/* ★ お知らせの各アイテム (省略) */
+.news-main-section .news-item-card {
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.news-main-section .news-item-card:last-child {
+    border-bottom: none;
+}
+
+.news-main-section .date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.news-main-section .news-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.news-main-section .news-title a {
+    color: #333;
+    transition: color 0.3s;
+}
+
+.news-main-section .news-title a:hover {
+    color: #990000;
+}
+
+.news-main-section .news-summary {
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* ★ 「もっと見る」ボタン (省略) */
+.news-main-section .load-more-button {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    width: 250px;
+    margin: 40px auto 0 auto;
+    background-color: #650e06;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-main-section .load-more-button:hover {
+    background-color: #330000;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.news-main-section .arrow-icon {
+    margin-left: 15px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid white;
+    display: block;
+    position: relative;
+    transition: transform 0.3s ease-out;
+}
+
+.news-main-section .load-more-button:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+/* --- イベント/カレンダーセクション --- */
+
+/* カレンダー全体を包むラッパー (和紙背景付き) */
+.promo-buttons-section {
+    position: relative;
+    /* Z-index: ニュースセクションの上に配置 */
+    z-index: 2;
+
+    /* 修正済み: 和紙テクスチャ自体の位置（固定） */
+    margin-top: -100px;
+
+    padding-top: 0;
+    padding-bottom: 120px;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    max-width: none;
+
+    /* 修正済み: クリックをスルーさせ、「もっと見る」ボタンを押せるようにする */
+    pointer-events: none;
+}
+
+/* 和紙背景 */
+.promo-buttons-section .washi-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* ★ カレンダー全体 (タイトル + 本体) のコンテナ */
+.promo-buttons-section .calendar-container {
+    position: relative;
+    z-index: 3;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    /* 修正済み: イベントのタイトルとカレンダーをさらに下に押し下げる */
+    padding-top: 150px;
+
+    /* 修正済み: カレンダーを操作可能にする */
+    pointer-events: auto;
+}
+
+/* カレンダーのタイトル (筆 + 文字) */
+.promo-buttons-section .calendar-header {
+    position: relative;
+    z-index: 3;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* ★ 修正: 中央揃えに戻す */
+    text-align: center;
+    /* カレンダー本体との間の余白は #calendarWrapper で調整 */
+    margin-bottom: 0;
+}
+
+.promo-buttons-section .calendar-header .hude-img {
+    width: 260px;
+    height: auto;
+    /* ★ 修正: 中央揃えに戻す */
+    margin: 0 auto;
+}
+
+.promo-buttons-section .calendar-header .section-title-img {
+    width: 170px;
+    height: auto;
+    /* ★ 修正: 中央揃えに戻す */
+    margin: 0 auto;
+    margin-top: -85px;
+}
+
+/* ★ カレンダーのメインコンテナ (白い箱) */
+#calendarWrapper {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    /* ★ 最終修正: イベントタイトル画像とカレンダー本体の間の余白を広げる */
+    margin-top: 50px;
+}
+
+/* ドロップダウンと月送りボタンのラッパー (省略) */
+#dropdownWrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+#storeSelect {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+    padding-right: 30px;
+}
+
+#monthControls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+#monthControls button {
+    background: none;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#monthControls button:hover {
+    background-color: #f0f0f0;
+}
+
+/* カレンダー本体 (省略) */
+#calendar {
+    font-size: 14px;
+}
+
+#calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#calendar th,
+#calendar td {
+    padding: 10px 5px;
+    text-align: center;
+    border: 1px solid #eee;
+    /* 平日の文字色 (黒) を確保するため、明示的な色設定がない場合は body の #333 (黒に近い色) を継承します */
+    color: #333;
+}
+
+#calendar th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    color: #333;
+    padding: 15px 5px;
+}
+
+/* ★ 曜日の色分け設定（土曜青、日曜/祝日赤、平日黒） ★ */
+
+/* ヘッダー部分 */
+#calendar th:first-child {
+    color: #d00;
+    /* 日曜日: 赤 */
+}
+
+#calendar th:last-child {
+    color: #00d;
+    /* 土曜日: 青 */
+}
+
+/* 日付部分 */
+#calendar td:nth-child(1) {
+    color: #d00;
+    /* 日曜日/祝日: 赤 */
+}
+
+#calendar td:nth-child(7) {
+    color: #00d;
+    /* 土曜日: 青 */
+}
+
+
+#calendar .month-year-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+/* --- プロモーションボタン部分 --- */
+.promo-buttons-section .promo-buttons-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 50px;
+
+    /* 修正済み: ボタンを操作可能にする */
+    pointer-events: auto;
+}
+
+/* 大ボタン (おすすめ宴会コース) (省略) */
+.main-promo-button-container {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+}
+
+.image-button-large {
+    display: block;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.image-button-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.image-button-large img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.image-button-large .button-text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.button-main-text {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.button-sub-text {
+    display: block;
+    font-size: 14px;
+}
+
+/* 小ボタン (グリッド) (省略) */
+.small-promo-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.image-button-small {
+    display: block;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.image-button-small:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.image-button-small img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.image-button-small .button-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-button-small:hover .button-text-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.button-main-text-small {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.button-sub-text-small {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* --- フッター (main-footer) --- */
+.main-footer {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    margin-top: 0;
+    padding: 0;
+    /* 修正済み: 高さの修正 */
+    height: 40px;
+    position: relative;
+}
+
+.main-footer .footer-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.main-footer .copyright-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+    white-space: nowrap;
+    z-index: 1;
+}
